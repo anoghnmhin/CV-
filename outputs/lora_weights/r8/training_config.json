@@ -1,0 +1,27 @@
+{
+  "base_model": "runwayml/stable-diffusion-inpainting",
+  "lora_rank": 8,
+  "lora_alpha": 8,
+  "lora_dropout": 0.05,
+  "target_modules": [
+    "to_q",
+    "to_k",
+    "to_v",
+    "to_out.0"
+  ],
+  "max_steps": 2000,
+  "actual_steps": 2000,
+  "learning_rate": 0.0001,
+  "batch_size": 2,
+  "grad_accum": 4,
+  "snr_gamma": 5.0,
+  "noise_offset": 0.1,
+  "best_val_loss": 0.011640875253360718,
+  "train_samples": 11004,
+  "val_samples": 50,
+  "seed": 42,
+  "total_time_min": 149.7,
+  "best_checkpoint": "D:\\CS331\\DoAn\\Occluded-Object-Restoration-CarsFocus\\outputs\\lora_weights\\r8\\best",
+  "xformers": false,
+  "attention_slicing": true
+}
