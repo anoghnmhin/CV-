@@ -1,0 +1,38 @@
+# .cursorrules — Car Inpainting Demo (CS331 · Streamlit)
+
+## Project
+Streamlit demo for occluded car inpainting.
+SD v1.5 base + LoRA (PEFT) + ControlNet + IP-Adapter.
+Drawing canvas via streamlit-drawable-canvas.
+
+## Critical model IDs (never change)
+- SD base:     runwayml/stable-diffusion-inpainting   ← LoRA trained on v1.5
+- ControlNet:  lllyasviel/control_v11p_sd15_canny
+- IP-Adapter:  h94/IP-Adapter / models / ip-adapter-plus_sd15.bin
+- LoRA path:   outputs/lora_weights/r8/best/
+
+## 4 pipeline objects (loaded once via @st.cache_resource)
+  pipe_base      → Config A
+  lora_pipe_base → Config E  (LoRA fused, merge_and_unload)
+  pipe_cn        → Configs B, C  (IP-Adapter loaded, scale=0 when not used)
+  lora_pipe_cn   → Configs F, G  (LoRA fused + IP-Adapter loaded)
+
+## Canny params (exact from notebooks)
+  low=80, high=150, mask_dilate=5px, zero edges inside mask
+
+## Visible patch (IP-Adapter input)
+  Replace masked pixels with mean color of visible region
+
+## Streamlit-specific rules
+  @st.cache_resource on load_pipelines() — never reload on rerun
+  @st.cache_data NOT for pipelines (tensors not serializable)
+  load_pipelines() called at module level, not inside button callback
+  canvas image_data is RGBA numpy — extract mask from alpha channel (> 10)
+  Disable IP-Adapter on non-IP configs via pipe.set_ip_adapter_scale(0.0)
+
+## Never do
+  stabilityai/stable-diffusion-2-inpainting  ← wrong base model
+  Reload LoRA inside inpaint() per call
+  controlnet_aux.CannyDetector  ← use cv2.Canny directly
+  xformers  ← use enable_attention_slicing("auto")
+  st.cache_data on torch models

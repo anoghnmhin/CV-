@@ -1,0 +1,14 @@
+data/
+PROJECT_CONTEXT.md
+*.env
+
+results/
+results-controlnet/
+
+results-ip-adapter/
+
+cs331_project_guide.md
+
+.venv
+
+
