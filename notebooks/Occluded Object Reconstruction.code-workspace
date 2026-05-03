@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Occluded Object Reconstruction",
+			"path": ".."
+		},
+		{
+			"name": "results-ip-control",
+			"path": "../../../Downloads/results-ip-control"
+		}
+	],
+	"settings": {}
+}
