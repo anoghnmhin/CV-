@@ -1,0 +1,23 @@
+[
+  {
+    "id": "easy",
+    "label": "Easy",
+    "input": "car_easy_input.png",
+    "result": "car_easy_result.png",
+    "metrics": "Masked SSIM: 0.9200\nMasked LPIPS: 0.0800 (preset placeholder — thay ảnh thật trước demo)"
+  },
+  {
+    "id": "medium",
+    "label": "Medium",
+    "input": "car_medium_input.png",
+    "result": "car_medium_result.png",
+    "metrics": "Masked SSIM: 0.8800\nMasked LPIPS: 0.1100 (preset placeholder)"
+  },
+  {
+    "id": "hard",
+    "label": "Hard",
+    "input": "car_hard_input.png",
+    "result": "car_hard_result.png",
+    "metrics": "Masked SSIM: 0.8400\nMasked LPIPS: 0.1500 (preset placeholder)"
+  }
+]
